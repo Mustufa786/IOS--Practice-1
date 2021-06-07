@@ -14,7 +14,8 @@ struct WeatherManager {
     
     func fetchWeather(cityName: String){
         let urlString = "\(apiUrl)\(cityName)"
-        print(urlString)
+        performTask(urlString: urlString)
+        
     }
     
     func performTask(urlString : String){
@@ -26,7 +27,21 @@ struct WeatherManager {
             
         }
     }
+    /**
+     handling response from API
+     */
     func responseCallback(data: Data?, response : URLResponse? , error : Error?){
+        if error != nil {
+            return
+        }
+        if let safeData = data{
+            let stringData = String(data: safeData, encoding: .utf8)
+            
+        }
+    }
+    
+    func parseJSON(data : Data){
+       
         
     }
 }
